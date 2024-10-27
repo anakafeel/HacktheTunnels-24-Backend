@@ -3,7 +3,6 @@ import morgan from "morgan";
 import helmet from "helmet";
 import cors from "cors";
 import dotenv from "dotenv";
-
 import { router, notFound, errorHandler } from "../api";
 
 dotenv.config();
