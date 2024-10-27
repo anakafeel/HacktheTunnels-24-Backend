@@ -12,7 +12,7 @@ class Application {
 
   constructor() {
     this.server = express();
-    this.server.set("host", process.env.HOST || "0.0.0.0"); // Changed to 0.0.0.0
+    this.server.set("port", process.env.HOST || "0.0.0.0"); // Changed to 0.0.0.0
     this.server.set("port", process.env.PORT || 5000);
     this.server.use(morgan("dev"));
     this.server.use(helmet());
