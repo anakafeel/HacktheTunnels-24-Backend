@@ -9,6 +9,7 @@ const getAPIRoot = async (_: Request, response: Response) => {
   });
 };
 
+
 router.get("/", getAPIRoot);
 router.use("/", AccountRouter);
 router.use("/scheduledEvents", ScheduledEventRouter);

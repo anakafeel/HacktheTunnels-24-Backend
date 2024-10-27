@@ -1,4 +1,4 @@
-import express, { Express } from "express";
+import express from "express";
 import morgan from "morgan";
 import helmet from "helmet";
 import cors from "cors";
@@ -8,7 +8,7 @@ import { router, notFound, errorHandler } from "../api";
 dotenv.config();
 
 class Application {
-  private server: Express;
+  private server: express.Express;
 
   constructor() {
     this.server = express();
@@ -17,7 +17,11 @@ class Application {
     this.server.use(helmet());
     this.server.use(cors());
     this.server.use(express.json());
+    
+    // Use the API routes
     this.server.use("/api/v1", router);
+
+    // Use 404 and error handlers after all routes
     this.server.use(notFound);
     this.server.use(errorHandler);
   }
@@ -30,6 +34,5 @@ class Application {
   }
 }
 
-const app: Application = new Application();
-
+const app = new Application();
 app.start();
