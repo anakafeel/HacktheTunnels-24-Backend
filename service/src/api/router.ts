@@ -1,4 +1,3 @@
-// router.ts
 import express, { Request, Response } from "express";
 import { AccountRouter, ScheduledEventRouter, TimetableRouter } from "./routes";
 
@@ -10,11 +9,8 @@ const getAPIRoot = async (_: Request, response: Response) => {
   });
 };
 
-
-
-
 router.get("/", getAPIRoot);
-router.use("/account", AccountRouter); 
+router.use("/", AccountRouter);
 router.use("/scheduledEvents", ScheduledEventRouter);
 router.use("/timetables", TimetableRouter);
 
