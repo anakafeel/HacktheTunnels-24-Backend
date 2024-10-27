@@ -37,19 +37,16 @@ const login = async (request: Request, response: Response) => {
   );
 
   if (result.err) {
-    return error(response, {
-      error: result.val.message,
-      statusCode: 400,
-    });
+    return response.status(400).json({ error: result.val.message });
   }
 
-  return success(response, {
+  return response.status(200).json({
     data: {
       token: result.val,
     },
-    statusCode: 200,
   });
 };
+
 
 const profile = async (request: Request, response: Response) => {
   const authenticationResult = await AuthorizationService.emailFromToken(
