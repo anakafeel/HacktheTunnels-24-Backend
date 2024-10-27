@@ -30,22 +30,26 @@ const signUp = async (request: Request, response: Response) => {
   });
 };
 
-const login = async (request: Request, response: Response) => {
+router.post("/login", async (request: Request, response: Response) => {
   const result = await AuthenticationService.login(
-    request.body.email,
-    request.body.password,
+      request.body.email,
+      request.body.password,
   );
 
   if (result.err) {
-    return response.status(400).json({ error: result.val.message });
+      return error(response, {
+          error: result.val.message,
+          statusCode: 400,
+      });
   }
 
-  return response.status(200).json({
-    data: {
-      token: result.val,
-    },
+  return success(response, {
+      data: {
+          token: result.val,
+      },
+      statusCode: 200,
   });
-};
+});
 
 
 const profile = async (request: Request, response: Response) => {
@@ -79,7 +83,6 @@ const profile = async (request: Request, response: Response) => {
 };
 
 router.post("/signup", signUp);
-router.post("/login", login);
 router.get("/profile", profile);
 
 export default router;

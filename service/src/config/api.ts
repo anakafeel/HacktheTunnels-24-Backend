@@ -3,7 +3,7 @@ import morgan from "morgan";
 import helmet from "helmet";
 import cors from "cors";
 import dotenv from "dotenv";
-import { router, notFound, errorHandler } from "../api";
+import { router, notFound, errorHandler } from "../api"; // Ensure correct path to your API
 
 dotenv.config();
 
@@ -19,10 +19,10 @@ class Application {
         this.server.use(express.json());
 
         // Use the API router for all /api routes
-        this.server.use("/api/v1", router); // Make sure this line is present
+        this.server.use("/api/v1", router);
 
         // Error handling middleware should be last
-        this.server.use(notFound); // Make sure to define these
+        this.server.use(notFound);
         this.server.use(errorHandler);
     }
 
