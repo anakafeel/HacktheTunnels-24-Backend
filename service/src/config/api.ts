@@ -11,6 +11,7 @@ class Application {
   private server: express.Express;
 
   constructor() {
+    this.server.use(cors({ origin: "https://hackthe-tunnels-24.vercel.app/" }));
     this.server = express();
     this.server.set("port", process.env.PORT || 5000);
     this.server.use(morgan("dev"));
@@ -24,6 +25,7 @@ class Application {
     // Use 404 and error handlers after all routes
     this.server.use(notFound);
     this.server.use(errorHandler);
+
   }
 
   public start(): void {
