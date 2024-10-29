@@ -3,36 +3,36 @@ import morgan from "morgan";
 import helmet from "helmet";
 import cors from "cors";
 import dotenv from "dotenv";
-import { router, notFound, errorHandler } from "../api"; // Ensure correct path to your API
+import { router, notFound, errorHandler } from "../api";
 
 dotenv.config();
 
 class Application {
-    private server: Express;
+  private server: Express;
 
-    constructor() {
-        this.server = express();
-        this.server.set("port", process.env.PORT || 5000);
-        this.server.use(morgan("dev"));
-        this.server.use(helmet());
-        this.server.use(cors());
-        this.server.use(express.json());
+  constructor() {
+    this.server = express();
+    this.server.set("port", process.env.HOST || "0.0.0.0"); // Changed to 0.0.0.0
+    this.server.set("port", process.env.PORT || 5000);
+    this.server.use(morgan("dev"));
+    this.server.use(helmet());
+    this.server.use(cors());
+    this.server.use(express.json());
+    this.server.use("/api/v1", router);
+    this.server.use(notFound);
+    this.server.use(errorHandler);
+  }
 
-        // Use the API router for all /api routes
-        this.server.use("/api/v1", router);
+  public start(): void {
+    const host: string = this.server.get("host");
+    const port: number = this.server.get("port");
 
-        // Error handling middleware should be last
-        this.server.use(notFound);
-        this.server.use(errorHandler);
-    }
-
-    public start(): void {
-        const port: number = this.server.get("port");
-        this.server.listen(port, () => {
-            console.log(`Server started on port ${port}`);
-        });
-    }
+    this.server.listen(port, host, () => {
+      console.log(`Server started at http://${host}:${port}`);
+    });
+  }
 }
 
 const app: Application = new Application();
+
 app.start();
