@@ -24,7 +24,7 @@ class Application {
   }
 
   public start(): void {
-    const host: string = this.server.get("host");
+    const host: string = process.env.HOST || "0.0.0.0";
     const port: number = this.server.get("port");
 
     this.server.listen(port, host, () => {
