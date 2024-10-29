@@ -16,7 +16,7 @@ class Application {
     this.server.set("port", process.env.PORT || 5000);
     this.server.use(morgan("dev"));
     this.server.use(helmet());
-    this.server.use(cors());
+    this.server.use(cors({origin: "https://hackthe-tunnels-24.vercel.app"}));
     this.server.use(express.json());
     this.server.use("/api/v1", router);
     this.server.use(notFound);
