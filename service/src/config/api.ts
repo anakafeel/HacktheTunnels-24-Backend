@@ -9,7 +9,7 @@ dotenv.config();
 
 class Application {
   private server: Express;
-
+  
   constructor() {
     this.server = express();
     this.server.set("port", process.env.HOST || "0.0.0.0"); // Changed to 0.0.0.0

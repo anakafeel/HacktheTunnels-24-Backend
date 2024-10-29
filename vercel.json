@@ -1,0 +1,14 @@
+{
+    "functions": {
+      "api/**.ts": {
+        "runtime": "nodejs14.x",
+        "handler": "src/config/api.ts"
+      }
+    },
+    "build": {
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  }
+  
