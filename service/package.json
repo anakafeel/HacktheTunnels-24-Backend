@@ -3,17 +3,17 @@
   "version": "1.0.0",
   "description": " The starting template for Hack the Tunnels",
   "main": "src/config/api.ts",
-  "scripts": {
-    "start": "ts-node src/config/api.ts",
-    "dev": "nodemon src/config/api.ts",
-    "build": "tsc",
-    "lint": "eslint --fix src test",
-    "test": "jest",
-    "typecheck": "tsc --noEmit",
-    "check": "prettier --check '**/*.{css,scss,html,ts}'",
-    "format": "prettier --write '**/*.{css,scss,html,ts}'",
-    "workshop": "ts-node src/misc/workshop.ts"
-  },
+"scripts": {
+  "start": "node dist/config/api.js",
+  "dev": "nodemon src/config/api.ts",
+  "build": "tsc",
+  "lint": "eslint --fix src test",
+  "test": "jest",
+  "typecheck": "tsc --noEmit",
+  "check": "prettier --check '**/*.{css,scss,html,ts}'",
+  "format": "prettier --write '**/*.{css,scss,html,ts}'",
+  "workshop": "ts-node src/misc/workshop.ts"
+},
   "prisma": {
     "schema": "src/db/schema.prisma",
     "seed": "ts-node src/db/seed.ts"
