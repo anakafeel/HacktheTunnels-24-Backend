@@ -1,8 +1,7 @@
 {
     "functions": {
       "api/**/*.ts": {
-        "runtime": "nodejs18.x",
-        "handler": "src/config/api.ts"
+        "runtime": "nodejs18.x"
       }
     },
     "build": {
