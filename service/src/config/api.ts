@@ -20,7 +20,7 @@ class Application {
     // Update CORS configuration to allow multiple origins
     this.server.use(cors({
       origin: [
-        'http://localhost:5174',  // Allow local development
+        'http://localhost:5175',  // Allow local development
         'https://hackthe-tunnels-24.vercel.app'  // Allow your production frontend
       ],
       credentials: true, // Allow credentials (like cookies, authorization headers, etc.)
