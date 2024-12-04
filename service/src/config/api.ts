@@ -9,14 +9,24 @@ dotenv.config();
 
 class Application {
   private server: Express;
-  
+
   constructor() {
     this.server = express();
-    this.server.set("port", process.env.HOST || "0.0.0.0"); // Changed to 0.0.0.0
     this.server.set("port", process.env.PORT || 5000);
+    
     this.server.use(morgan("dev"));
     this.server.use(helmet());
-    this.server.use(cors({origin: "https://hackthe-tunnels-24.vercel.app"}));
+
+    // Update CORS configuration to allow multiple origins
+    this.server.use(cors({
+      origin: [
+        'http://localhost:5174',  // Allow local development
+        'https://hackthe-tunnels-24.vercel.app'  // Allow your production frontend
+      ],
+      credentials: true, // Allow credentials (like cookies, authorization headers, etc.)
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Specify allowed methods
+    }));
+
     this.server.use(express.json());
     this.server.use("/api/v1", router);
     this.server.use(notFound);
@@ -34,5 +44,4 @@ class Application {
 }
 
 const app: Application = new Application();
-
 app.start();

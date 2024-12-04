@@ -3,17 +3,17 @@
   "version": "1.0.0",
   "description": " The starting template for Hack the Tunnels",
   "main": "src/config/api.ts",
-"scripts": {
-  "start": "node dist/config/api.js",
-  "dev": "nodemon src/config/api.ts",
-  "build": "tsc",
-  "lint": "eslint --fix src test",
-  "test": "jest",
-  "typecheck": "tsc --noEmit",
-  "check": "prettier --check '**/*.{css,scss,html,ts}'",
-  "format": "prettier --write '**/*.{css,scss,html,ts}'",
-  "workshop": "ts-node src/misc/workshop.ts"
-},
+  "scripts": {
+    "start": "node dist/config/api.js",
+    "dev": "nodemon src/config/api.ts",
+    "build": "tsc",
+    "lint": "eslint --fix src test",
+    "test": "jest",
+    "typecheck": "tsc --noEmit",
+    "check": "prettier --check '**/*.{css,scss,html,ts}'",
+    "format": "prettier --write '**/*.{css,scss,html,ts}'",
+    "workshop": "ts-node src/misc/workshop.ts"
+  },
   "prisma": {
     "schema": "src/db/schema.prisma",
     "seed": "ts-node src/db/seed.ts"
@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
-    "@types/cors": "^2.8.13",
+    "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
     "@types/jsonwebtoken": "^9.0.7",
     "@types/morgan": "^1.9.4",
