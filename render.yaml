@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: hackthetunnels-24-backend
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        value: file:./dev.db
+      - key: JWT_SECRET
+        value: your-secret-key-here
+      - key: PORT
+        value: 5000
